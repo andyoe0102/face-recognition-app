@@ -1,0 +1,23 @@
+.profile-modal {
+    background: rgb(255,255,255,0.8)!important;
+    position: fixed!important;
+    height: 100%!important;
+    width: 100%!important;
+    top:0!important;
+    left: 0!important;
+    display: flex!important;
+    align-items:center!important;
+    justify-content: center!important;
+}
+
+.modal-close{
+    font-size: 3rem!important;
+    font-style:bold!important;
+    cursor:pointer!important;
+}
+
+.modal-close:hover{
+    color:grey!important;
+    cursor:pointer!important;
+
+}
