@@ -59,6 +59,39 @@ class App extends Component {
     }})
   }
 
+  componentDidMount(){
+    const token = window.sessionStorage.getItem('token');
+    if(token){
+      fetch('http://localhost:3000/signin',{
+        method: 'post',
+        headers: {
+          'Content-Type': "application/json",
+          'Authorization': token
+        }
+      })
+      .then(resp => resp.json())
+      .then(data =>{
+        if(data && data.id){ 
+          fetch(`http://localhost:3000/profile/${data.id}`,{
+            method: 'get',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token
+            }
+          })
+          .then(resp =>resp.json())
+          .then(user => {
+            console.log(user);
+            if(user && user.email){
+              this.loadUser(user)
+              this.onRouteChange('home');
+            }
+          })
+        }
+      })
+      .catch(console.log)
+    }
+  }
 
 
   calculateFaceLocations = (data) => {
